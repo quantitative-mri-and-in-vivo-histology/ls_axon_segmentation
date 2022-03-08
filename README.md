@@ -29,7 +29,7 @@ To Install ls_axon_segmentation and its dependencies run:
 poetry run pip install setuptools==59.5
 poetry install --no-dev
 ```
-## Activate enviornment
+## Activate environment
 The installation of ls_axon_segmentation using poetry creates a new virtual environment in `/.venv`. Activate the virtual environment, by running
 ```bash
 # Linux
