@@ -1,0 +1,16 @@
+# @package _global_
+
+defaults:
+  - /data_module: lm_data_module.yaml
+  - /lightning_module: lm_lightning_module.yaml
+  - /loss: lovasz_softmax.yaml
+  - /optimizer: sgd.yaml
+  - /lr_scheduler: multi_step_lr.yaml
+  - /model: u_net_en_encoders.yaml
+
+name: ls_axon_segmentation
+batch_size: 4
+patch_size: 512
+patch_size_2d:
+  - ${patch_size}
+  - ${patch_size}

@@ -1,0 +1,57 @@
+# @package _global_
+
+# specify here default training configuration
+defaults:
+  - _self_
+  - trainer: default.yaml
+  - logger: many_loggers.yaml # set logger here or use command line (e.g. `python run.py logger=wandb`)
+  - callbacks: default.yaml
+
+  # modes are special collections of config options for different purposes, e.g. debugging
+  - mode: default.yaml
+
+  # experiment configs allow for version control of specific configurations
+  # for example, use them to store best hyperparameters for each combination of model and datamodule
+  - experiment: ls_axon_segmentation.yaml
+
+  # optional local config for machine/user specific settings
+  - optional local: default.yaml
+
+  # enable color logging
+  - override hydra/hydra_logging: colorlog
+  - override hydra/job_logging: colorlog
+  # modes are special collections of config options for different purposes, e.g. debugging
+
+# path to original working directory
+# hydra hijacks working directory by changing it to the new log directory
+# so it's useful to have this path as a special variable
+# https://hydra.cc/docs/next/tutorials/basic/running_your_app/working_directory
+work_dir: ${hydra:runtime.cwd}
+
+# path to folder with data
+data_directory: ${work_dir}/data
+
+# pretty print config at the start of the run using Rich library
+print_config: True
+
+# disable python warnings if they annoy you
+ignore_warnings: True
+
+# evaluate on test set, using best model weights achieved during training
+# lightning chooses best weights based on metric specified in checkpoint callback
+test_after_training: False
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: null
+
+# name of the run, should be used along with experiment mode
+name: null
+
+training_loss_name: training_loss
+validation_loss_name: validation_loss
+validation_metric_name: ${validation_loss_name}
+
+hydra:
+  job:
+    env_set:
+      OMP_NUM_THREADS: "1"

@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "ls_axon_segmentation"
+version = "0.1.0"
+description = "Segmentation of light microscopy images of white matter tissue."
+authors = ["Laurin Mordhorst <l.mordhorst@uke.de>"]
+license = "LICENSE.TXT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+torch = "^1.10.2"
+pytorch-lightning = "^1.5.9"
+torchmetrics = "^0.7.1"
+segmentation-models-pytorch = "^0.2.1"
+scikit-image = "^0.19.1"
+sklearn = "^0.0"
+imgaug = "^0.4.0"
+monai = "^0.8.0"
+hydra-colorlog = "^1.1.0"
+hydra-core = "^1.1.1"
+tensorboard = "^2.7.0"
+rich = "^11.1.0"
+pytest = "^7.0.0"
+scikit-learn = "^1.0.2"
+seaborn = "^0.11.2"
+setuptools = "59.5.0"
+spams-bin = "^2.6.4"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.17.0"
+black = "^22.1.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+pudb = "^2022.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

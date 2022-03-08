@@ -1,0 +1,33 @@
+# @package _global_
+
+defaults:
+  - /data_module/augmentation_transform: default.yaml
+
+preprocessing_transform:
+  _target_: ls_axon_segmentation.transform.StandardizeChannelwise
+  mean: [0.3586, 0.446, 0.6912]
+  std: [0.2303, 0.2263, 0.1311]
+
+data_module:
+  _target_: ls_axon_segmentation.data_module.LmDataModule.create_from_file
+  batch_size: ${batch_size}
+  samples_per_epoch: 150
+  num_workers: ${num_workers}
+  pin_memory: true
+  data_directory: ${data_directory}
+  training_list_file: ${data_directory}/training_cv_${cv_split}.yaml
+  validation_list_file: ${data_directory}/validation_cv_${cv_split}.yaml
+  test_segmentation_metrics_list_file: ${data_directory}/test_samples_segmentation_metrics.yaml
+  test_axon_radii_samples_list_file: ${data_directory}/test_samples_ensemble_mean_axon_radii.yaml
+  preprocessing_transform: ${preprocessing_transform}
+
+ignore_class: 3
+number_of_classes: 3
+number_of_input_channels: 3
+cv_split: "0"
+
+class_dict:
+  background: 0
+  myelin: 1
+  axon: 2
+  ignore: ${ignore_class}

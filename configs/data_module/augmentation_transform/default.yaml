@@ -1,0 +1,66 @@
+_target_: torchvision.transforms.Compose
+transforms:
+  - _target_: ls_axon_segmentation.transform.ImgAugAugmentation
+    augmentation_sequence:
+      _target_: imgaug.augmenters.Sequential
+      children:
+        - _target_: imgaug.augmenters.size.CropToFixedSize
+          height: ${patch_size}
+          width: ${patch_size}
+  - _target_: ls_axon_segmentation.transform.StainAugmentation
+    method: macenko
+    sigma1: 0.15
+    sigma2: 0.25
+  - _target_: ls_axon_segmentation.transform.ImgAugAugmentation
+    augmentation_sequence:
+      _target_: imgaug.augmenters.Sequential
+      children:
+        - _target_: imgaug.augmenters.MotionBlur
+          k: 5
+          angle:
+            _target_: builtins.tuple
+            _args_:
+              - [-5, 5]
+        - _target_: imgaug.augmenters.MultiplyHue
+          mul:
+            _target_: builtins.tuple
+            _args_:
+              - [0.9, 1.1]
+        - _target_: imgaug.augmenters.MultiplySaturation
+          mul:
+            _target_: builtins.tuple
+            _args_:
+              - [0.9, 1.1]
+        - _target_: imgaug.augmenters.LinearContrast
+          alpha:
+            _target_: builtins.tuple
+            _args_:
+              - [0.75, 1.25]
+        - _target_: imgaug.augmenters.MultiplyBrightness
+          mul:
+            _target_: builtins.tuple
+            _args_:
+              - [0.75, 1.25]
+        - _target_: imgaug.augmenters.GaussianBlur
+          sigma:
+            _target_: builtins.tuple
+            _args_:
+              - [0, 1.5]
+        - _target_: imgaug.augmenters.Fliplr
+          p: 0.5
+        - _target_: imgaug.augmenters.Flipud
+          p: 0.5
+        - _target_: imgaug.augmenters.Affine
+          rotate:
+            _target_: builtins.tuple
+            _args_:
+              - [-45, 45]
+          scale:
+            _target_: builtins.tuple
+            _args_:
+              - [0.8, 1.2]
+          shear:
+            _target_: builtins.tuple
+            _args_:
+              - [-25, 25]
+          cval: 0

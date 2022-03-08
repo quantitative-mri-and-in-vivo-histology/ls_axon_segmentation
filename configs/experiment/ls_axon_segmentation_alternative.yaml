@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - /data_module: lm_data_module.yaml
+  - /lightning_module: lm_lightning_module.yaml
+  - /loss: cross_entropy.yaml
+  - /optimizer: adam.yaml
+  - /lr_scheduler: step_lr.yaml
+  - /model: u_net_en_encoders.yaml
+
+name: ls_axon_segmentation_alt
+batch_size: 8
+patch_size: 256
+patch_size_2d:
+  - ${patch_size}
+  - ${patch_size}
+
+lightning_module:
+  use_probabilities_for_loss: false

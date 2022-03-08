@@ -1,0 +1,4 @@
+# @package _global_
+trainer:
+  gpus: 1
+num_workers: 6

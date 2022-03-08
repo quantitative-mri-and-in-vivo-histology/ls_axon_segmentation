@@ -1,0 +1,17 @@
+_target_: ls_axon_segmentation.lightning_module.LmLightningModule
+patch_size: ${patch_size_2d}
+batch_size: ${batch_size}
+preprocessing_transform: ${preprocessing_transform}
+use_probabilities_for_loss: true
+class_dict: ${class_dict}
+loss_config: ${loss}
+optimizer_config: ${optimizer}
+lr_scheduler_config: ${lr_scheduler}
+net_config: ${model}
+log_images_training_every_n_epochs: ${trainer.check_val_every_n_epoch}
+log_images_training_batches_per_epoch: 1
+log_images_validation_every_n_epochs: 1
+log_images_validation_batches_per_epoch: -1
+log_images_test_batches_per_epoch: -1
+log_training_loss_name: ${training_loss_name}
+log_validation_loss_name: ${validation_loss_name}

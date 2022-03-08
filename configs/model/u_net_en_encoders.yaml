@@ -1,0 +1,9 @@
+_target_: segmentation_models_pytorch.Unet
+classes: ${number_of_classes}
+in_channels: ${number_of_input_channels}
+encoder_name: timm-efficientnet-b3
+encoder_depth: 4
+encoder_weights: imagenet
+decoder_channels: [256, 128, 64, 32]
+decoder_attention_type: scse
+activation:

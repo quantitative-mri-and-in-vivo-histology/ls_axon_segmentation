@@ -1,0 +1,2 @@
+_target_: ls_axon_segmentation.loss.LovaszSoftmax
+ignore: ${ignore_class}
