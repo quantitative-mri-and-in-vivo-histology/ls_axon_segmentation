@@ -16,7 +16,7 @@ Implementation of [Towards a representative reference for MRI-based human axon r
 # Installation
 ## Clone repository
 ```bash
-git clone https://github.com/lau-mo/ls_axon_segmentation
+git clone https://github.com/quantitative-mri-and-in-vivo-histology/ls_axon_segmentation
 cd ls_axon_segmentation
 ```
 ## Requirements
