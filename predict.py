@@ -95,7 +95,7 @@ if __name__ == "__main__":
     imwrite(
         args.output_file,
         prediction_image,
-        {"resolution": (*resolution_in_ppi, "INCH"), "compress": 5},
+        **{"resolution": (*resolution_in_ppi, "INCH"), "compression": 'zlib'}
     )
     log.info(f"... done saving segmentation to {args.output_file}.")
 
