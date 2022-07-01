@@ -26,7 +26,6 @@ Install the following requirements:
 ## Install ls_axon_segmentation
 To Install ls_axon_segmentation and its dependencies run:
 ```bash
-poetry run pip install setuptools==59.5
 poetry install --no-dev
 ```
 ## Activate environment
